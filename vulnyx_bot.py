@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 import os
 
 RSS_URL = "https://vulnyx.com/feed/rss.xml"
-BOT_TOKEN = os.getenv("7843128995:AAHyAgO91PRYpnRsgjHkMdic9hp-kkvNGts")
-CHAT_ID = os.getenv("165689956")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 LAST_VM_FILE = "last_vm.txt"
 
 def get_latest_vm():
