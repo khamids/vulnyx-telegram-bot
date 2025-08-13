@@ -3,7 +3,7 @@ name: VulNyx Telegram Bot
 on:
   schedule:
     - cron: "*/30 * * * *"  # Runs every 30 mins
-  workflow_dispatch:        # Allows manual run
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -11,12 +11,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Cache last_vm.txt
-        uses: actions/cache@v3
         with:
-          path: last_vm.txt
-          key: last-vm-cache
+          persist-credentials: true  # Needed for pushing changes
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,3 +27,6 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python vulnyx_bot.py
+
+      - name: Commit last_vm.txt
+        run: |
